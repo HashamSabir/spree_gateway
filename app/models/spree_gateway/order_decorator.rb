@@ -3,11 +3,11 @@ module SpreeGateway
     def self.prepended(base)
       return if base.checkout_steps.key?(:payment_confirm)
 
-      base.insert_checkout_step(
-        :payment_confirm,
-        before: :complete,
-        if: ->(order) { order.intents? }
-      )
+      # base.insert_checkout_step(
+      #   :payment_confirm,
+      #   before: :complete,
+      #   if: ->(order) { order.intents? }
+      # )
     end
 
     def process_payments!
