@@ -13,7 +13,7 @@ module Spree
 
     private
     def paypal_api
-      preferred_test_mode ? PAYPAL_TEST_API : PAYPAL_LIVE_API
+      [false, "false"].include?(preferred_test_mode) ? PAYPAL_TEST_API : PAYPAL_LIVE_API
     end
 
     def source_not_found
