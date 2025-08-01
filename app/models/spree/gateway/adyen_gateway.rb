@@ -111,7 +111,7 @@ module Spree
       options[:order_id] = gateway_options[:order_reference_id]
       options[:currency] = gateway_options[:currency]
       options[:return_url] = "api/v2/storefront/checkout?order_token=#{gateway_options[:order_token]}"
-      options[:channel] = "web"
+      options[:channel] = "Web" # Channel for the payment, e.g. web, pos, app (Payment initiated in a browser (desktop or mobile web))
       options[:amount] = money
       options[:billing_address] = gateway_options[:billing_address]
       options[:splits] = gateway_options[:splits]
@@ -123,6 +123,8 @@ module Spree
                                 store_url
                               end
 
+      options[:shopperEmail] = gateway_options[:email]
+      options[:shopperInteraction] = "Ecommerce" # One-time online purchase
       options[:shopperReference] = if gateway_options[:customer_id].present?
                                      gateway_options[:customer_id]
                                    else
